@@ -1,0 +1,4 @@
+make -f Makefile clean
+make -f Makefile
+make -f Makefile package
+# tar czvpf mfit${1}.tgz  bin
