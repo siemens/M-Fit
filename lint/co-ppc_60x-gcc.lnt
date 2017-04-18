@@ -1,0 +1,330 @@
+/******************************************************************************
+                               co-ppc_60x-gcc.lnt
+
+    Copyright (c) 2015-2017 Siemens Industry, Inc.
+    Original author: Jonathan Grant
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+        Free Software Foundation, Inc.
+        51 Franklin Street, Fifth Floor
+        Boston MA  02110-1301 USA.
+
+*******************************************************************************/
+
+//    Compiler Options for ELinOS and GCC
+
+//    This file contains options to allow FlexeLint to process source
+//    files for the Gnu compiler (GCC) crosscompiling under ELinOS.
+//    Note: this file in included by co-ppc_60x-gxx.lnt
+
+
+// ELINOS 4.0 for PPC 60X GCC pre-defined macros
+// These were acquired by doing "ppc_60x-gcc -E -dM test.c" on an empty file 'test.c'
+// They are also sorted by 'sort'
+
+-d__BIG_ENDIAN__=1
+-d__CHAR_BIT__=8
+-d__CHAR_UNSIGNED__=1
+-d__DBL_DENORM_MIN__=4.9406564584124654e-324
+-d__DBL_DIG__=15
+-d__DBL_EPSILON__=2.2204460492503131e-16
+-d__DBL_HAS_INFINITY__=1
+-d__DBL_HAS_QUIET_NAN__=1
+-d__DBL_MANT_DIG__=53
+-d__DBL_MAX__=1.7976931348623157e+308
+-d__DBL_MAX_10_EXP__=308
+-d__DBL_MAX_EXP__=1024
+-d__DBL_MIN__=2.2250738585072014e-308
+-d__DBL_MIN_10_EXP__=(-307)
+-d__DBL_MIN_EXP__=(-1021)
+-d__DECIMAL_DIG__=17
+-d__ELF__=1
+-d__FINITE_MATH_ONLY__=0
+-d__FLT_DENORM_MIN__=1.40129846e-45F
+-d__FLT_DIG__=6
+-d__FLT_EPSILON__=1.19209290e-7F
+-d__FLT_EVAL_METHOD__=0
+-d__FLT_HAS_INFINITY__=1
+-d__FLT_HAS_QUIET_NAN__=1
+-d__FLT_MANT_DIG__=24
+-d__FLT_MAX__=3.40282347e+38F
+-d__FLT_MAX_10_EXP__=38
+-d__FLT_MAX_EXP__=128
+-d__FLT_MIN__=1.17549435e-38F
+-d__FLT_MIN_10_EXP__=(-37)
+-d__FLT_MIN_EXP__=(-125)
+-d__FLT_RADIX__=2
+-d__gnu_linux__=1
+-d__GNUC__=3
+-d__GNUC_MINOR__=4
+-d__GNUC_PATCHLEVEL__=4
+-d__GXX_ABI_VERSION=1002
+-d__INT_MAX__=2147483647
+-d__LDBL_DENORM_MIN__=4.9406564584124654e-324L
+-d__LDBL_DIG__=15
+-d__LDBL_EPSILON__=2.2204460492503131e-16L
+-d__LDBL_HAS_INFINITY__=1
+-d__LDBL_HAS_QUIET_NAN__=1
+-d__LDBL_MANT_DIG__=53
+-d__LDBL_MAX__=1.7976931348623157e+308L
+-d__LDBL_MAX_10_EXP__=308
+-d__LDBL_MAX_EXP__=1024
+-d__LDBL_MIN__=2.2250738585072014e-308L
+-d__LDBL_MIN_10_EXP__=(-307)
+-d__LDBL_MIN_EXP__=(-1021)
+-d__linux=1
+-d__linux__=1
+-d__LONG_LONG_MAX__=9223372036854775807LL
+-d__LONG_MAX__=2147483647L
+-d__NO_INLINE__=1
+-d__powerpc=1
+-d__powerpc__=1
+-d__PPC=1
+-d__PPC__=1
+-d__PTRDIFF_TYPE__=int
+-d__REGISTER_PREFIX__
+-d__SCHAR_MAX__=127
+-d__SHRT_MAX__=32767
+-d"__SIZE_TYPE__=unsigned int"
+-d__STDC_HOSTED__=1
+-d__unix=1
+-d__unix__=1
+-d__USER_LABEL_PREFIX__
+-d__VERSION__="3.4.4 (ELinOS V4.0 3.4.4-11 2005-10-23)"
+-d__WCHAR_MAX__=2147483647
+-d"__WCHAR_TYPE__=long int"  // this was commented out
+-d"__WINT_TYPE__=unsigned int"
+-d_ARCH_PPC=1
+-d_BIG_ENDIAN=1
+-d_CALL_SYSV=1
+-dlinux=1
+-dpowerpc=1
+-dPPC=1
+-dunix=1
+
+// ===== These seem to be needed but were not in the GCC dump =====
+-d__STDC__=1
+-d__null=0
+
+
+// ELINOS-4.0 for PPC 60x <include> file search path
+
+// Sysgo at root of C:
+-iC:\sysgo\opt\elinos-4.0\cdk\ppc\60x\glibc-2.3.4\lib\gcc\powerpc-linux\3.4.4\include
+-iC:\sysgo\opt\elinos-4.0\cdk\ppc\60x\glibc-2.3.4\powerpc-linux\include
+
+// Sysgo under 'Program Files'
+-i"C:\Program Files\sysgo\opt\elinos-4.0\cdk\ppc\60x\glibc-2.3.4\lib\gcc\powerpc-linux\3.4.4\include"
+-i"C:\Program Files\sysgo\opt\elinos-4.0\cdk\ppc\60x\glibc-2.3.4\powerpc-linux\include"
+
+// Sysgo \opt\elinos under Cygwin ('C:\cygwin\opt\elinos-4.0')
+-i"C:\cygwin\opt\elinos-4.0\cdk\ppc\60x\glibc-2.3.4\lib\gcc\powerpc-linux\3.4.4\include"
+-i"C:\cygwin\opt\elinos-4.0\cdk\ppc\60x\glibc-2.3.4\powerpc-linux\include"
+
+
+-cgnu       // defines LANGUAGE_C for C modules
+
+// from the size-options.lnt generated for ELINOS and Kontron the size in bytes
+// short=2, int=4, long=4, long long=8, float=4, double=8, long double=8, pointer=4, wchar_t=4
+-ss2  -si4  -sl4  -sll8  -sf4  -sd8  -sld8  -sp4  -sw4
+
+//    end of system dependent options.
+
++fwc        // wchar_t is builtin
++fdc        // This option in effect says that for the purpose of function overloading there are three
+            // distinct char types: char, signed char and unsigned char. This is the C++ standard.
+
+            // while processing library headers
+-wlib(1)    // sets the warning level within library headers to 1
+	    // (no warnings, just syntax errors).  Comment out if you
+	    // are actually linting library headers.  This
+	    // option makes obsolete options of the form -elib(axxx) where
+	    // xxx >= 400 which may be retained for historical reasons.
+-elibsym(14)  // symbol previously defined
+-elibsym(628) // Suppress 628 for __builtin symbols.
+-elib(2)    // unclosed quotes in nserve.h
+-elib(15)   // redeclaration of symbol
+-elib(123)  // size is both a variable and a macro with args
+-elib(516)  // lots of redeclarations in Linux stdlib.h
+-elib(537)  // repeated include files
+-elib(553)  // undefined preprocessor variables are taken as 0
+-elib(602)  // in dial.h there are comments within comments ?
+-elib(607)  // parameter substitution within string
+-elib(624)  // typedef symbol redeclared
+-elib(652)  // suppress message about #define of earlier declared symbols
+-elib(762)  // suppress message about multiple identical declarations and
+-elib(760)  // suppress message about multiple identical macro defs
+-elib(767)  // differently defined macro
+-elib(1014) // class member definition within extern "C++"
+
+-emacro(734,putc)   // don't complain about items being too large.
+-emacro((???),va_arg)   // the va_arg() macro can yield 415, 416, 661, 662
+			// 796 and 797 (out-of-bounds errors).
+-emacro(506,_IOC_TYPECHECK)  //Warning 506 - Constant value Boolean
+-emacro(413,offsetof)        // use of NULL pointer creates a stir
+-emacro(545,offsetof)        // addressing an array member is OK
+-emacro(923,PTHREAD_CANCELED) // cast from int to pointer [MISRA 2012 Rule 11.6, required]
+
+//-elib(793)   // Linux has minor ANSI violation in stddef.h
+//-elib(569)   // Linux truncates some data in huge_val.h
+
+-esym(528,__huge_val,__nan,__qnan,__qnanf,__snan,__snanf)
+           // We don't care if we don't reference some GNU funcs
+-esym(528,__gnu_malloc,__gnu_calloc)
+
+
+//  The following options were found necessary when processing
+//  the Unix headers within /usr/include
+
++fdi            // Use the directory of the including file
+
++ppw(ident)     // Tolerate #ident
+//+ppw(warning)   // Tolerate #warning
+//+ppw(error)     // Tolerate #error
+
+// GCC provides alternative spellings of certain keywords:
+-rw_asgn(__inline,inline)
+-rw_asgn(__inline__,inline)
+-rw_asgn(__signed__,signed)
+-rw_asgn(__volatile__,volatile)
+-rw_asgn(__volatile,volatile)
+
+
+// This re-definition of the various spellings of the asm keyword enables
+// Lint to pass gracefully over expression-statements like:
+// __asm __volatile ("fsqrt" : "=t" (__result) : "0" (__x));
+-rw_asgn( asm,      _up_to_brackets )
+-rw_asgn( __asm,    _up_to_brackets )
+-rw_asgn( __asm__,  _up_to_brackets )
+
+-rw(__except)           // This MS reserved word is used as an identifier
+
++rw(_to_semi)           // needed for two macros below.
++rw(__typeof__)         // activate __typeof__ keyword
+-d__typeof=__typeof__   // an alternative to using __typeof__
+
+
+// Other reserved words which must be enabled
++rw(__restrict,__restrict__)           // these will get ignored
++rw(__complex__, __real__, __imag__ )  // these will get ignored
++rw(__thread)                          // enable thread local storage
+
+
+
+++d__attribute__()=     // ignore this keyword and following parenthetical
+++d__attribute()=       // variant spelling of "__attribute__"
+++d__const=const        // gconv.h uses __const rather than const
+++dconst=const          // ensure const expands to const.
+
+
+// "__extension__" is GCC's way of allowing the use of non-standard
+// constructs in a strict Standard-conforming mode.  We don't currently
+// have explicit support for it, but we can use local suppressions.  For
+// example, we can use -e(160) so that we will not see any Errors about
+// GNU statement-expressions wrapped in __extension__().
+++d"__extension__=/*lint -e(160) */"
+
+++d__builtin_va_list=void*            // used by stdarg.h
+++d__builtin_stdarg_start()=_to_semi  // ditto
+++d__builtin_va_end()=_to_semi        // ditto
+++d"__builtin_va_arg(a,b)=(*( (b *) ( ((a) += sizeof(b)) - sizeof(b) )))"
+++d__builtin_strchr=(char*)     // permits the inline definition ...
+++d__builtin_strpbrk=(char*)    // of these functions to be linted ...
+++d__builtin_strrchr=(char*)    // without drawing a complaint
+++d__builtin_strstr=(char*)     // about the use of a non-standard name
+
+++d__PRETTY_FUNCTION__=___function___ // lint defines ___function___ internally
+++d__FUNCTION__=___function___        // lint defines ___function___ internally
+
+
+
+//  The following functions exhibit variable return modes.
+//  That is, they may equally-usefully be called for a value
+//  as called just for their effects.  Accordingly we inhibit
+//  Warning 534 for these functions.
+//  Feel free to add to or subtract from this list.
+
+-esym(534,close,closedir,creat,fclose,fflush,fprintf,fputc,fgets)
+-esym(534,fputs,fscanf,fseek,fwrite,lseek,memcpy,memmove,memset)
+-esym(534,printf,puts,scanf,sprintf,snprintf,sscanf,strcat,strcpy)
+-esym(534,strncat,strncpy,system,time,unlink,write,kill)
+
+-esym(534,sleep,listen,gethostname,ioctl,fsync,usleep,nanosleep)
+
+-esym(534,sigfillset,sigaction,sigemptyset,sigaddset,atexit,sched_yield,umask)
+-esym(534,pthread_create,pthread_join,pthread_kill)
+-esym(534,pthread_sigmask,pthread_once,pthread_setschedparam)
+-esym(534,pthread_mutex_init,pthread_mutex_lock,pthread_mutex_unlock)
+-esym(534,pthread_cond_init,pthread_cond_wait,pthread_cond_signal)
+-esym(534,vprintf,vfprintf,localtime_r,asctime_r)
+
+
+-esym(418,fflush) // passing the NULL pointer is valid for fflush()
+
+
+
+// The following options are required by most compilers to
+// noiselessly process iostream.h
+
+-elib(1717) //empty prototypes
+-elib(522) //function return value ignored
+-elib(1053) //prototypes cannot be distinguished
+-elib(1721) //unusual operator =() declaration
+-elib(1720) //assignment op has non-const parameter
+-elib(655)  // bitwise operator combining compatible enum's
+-elib(641)  // converting enum's to int
+-elib(537)  // repeated include file (ios.h)
+-elib(1511) // member (rdbuf) hides nonvirtual member
+-elib(1712) // default constructor not defined for class
+-esym(1702,*operator<<,*operator>>)
+-esym(534,*operator<<,*operator>>)
+-esym(1055,*__builtin*)
+-esym(718,*__builtin*)   // The compiler does not need these ...
+-esym(746,*__builtin*)   // declared and it knows their prototypes.
+
+
+// These functions return things that are frequently ignored.
+
+-esym(534,ostream::operator<<,istream::operator>>)
+
+-elib(747) //significant prototype coercion
+-elib(740) //unusual pointer casts
+-elib(1029) //default argument repeated -- can't dist. char, signed char
+-elib(1055) //call to rdbuf() questioned?
+-elib(1708,1709) // minor C/C++ declaration conflict
+
+-elib(763)   // redundant declaration
+-elib(1510)  // base class has no destructor
+-elib(1516)  // data member hiding inherited member
+-elib(1730)  // class/struct inconsistancy
+-elib(569)   // loss of information 8-bits - 7bits
+
+// enabling those type_traits is not required it seems
+// leaving in for the time being until confident it can go away [WB]
+//+rw(*type_traits)       // some gcc weirdness
+//-esym(39,__type_traits*)  // funky gcc stuff
+//-esym(39,_Is_integer*)
+//-rw(__is_pod)           // this is necessary so that including the STL <map> works
+                        // +rw(*type_traits) adds too many keywords
+						// actually +rw(*type_traits) shouldn't be used
+						// unless using GNU version 4.3.0 or higher which we are not
+						// see standard co-gcc.h that comes with PC-Lint
+
+// The following gcc specific functions do not return, similar to exit
+-function(exit,__assert_fail)
+-function(exit,__assert_perror_fail)
+-emacro(506, assert) // constant value boolean
+
+
+-e93         // allow newlines within quoted string arguments to macros

@@ -1,0 +1,107 @@
+/******************************************************************************
+                                    mfit.lnt
+
+    Copyright (c) 2015-2017 Siemens Industry, Inc.
+    Original author: Jonathan Grant
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+        Free Software Foundation, Inc.
+        51 Franklin Street, Fifth Floor
+        Boston MA  02110-1301 USA.
+
+*******************************************************************************/
+
+// These are M-Fit general options: those configurations and suppressions
+// unique to the M-Fit software but not generally required.
+
+
+misra.lnt
+
+
+// Configuration options
+
++fpm    // precision of an operator is bound by the maximum of its operands
++fie    // use integer model of enums; suppresses Warning 641
++e900   // always produce at least one line of output
+-printf(2,fitPrint) // fitPrint() has printf-like formatting in 2nd arg
+
+
+// C Elective Notes to always be suppressed, even if using -w4
+
+-e909   // Implicit conversion from type-x to bool
+-e911   // Implicit expression promotion from type-x to type-y
+-e912   // Implicit binary conversion from type-x to type-y
+-e915   // Implicit conversion (context) type-x to type-y
+-e917   // Prototype coercion (context) type-x to type-y
+-e92*   // Cast from xx to yy
+-e935   // int within struct <portability related>
+-e946   // Relational or subtract operator applied to pointers
+-esym(952,argv) // Nothing can be done about argv not being const
+-e952   // Parameter 'x' (Location) could be declared const
+-e956   // Non const, non volatile static or external variable 'x' <re-entrant related>
+-e970   // Use of modifier or type 'x' outside of a typedef
+-e964   // Header file 'x' not directly used in module 'y'
+-e966   // Indirectly included header file
+
+
+// C++ Elective Notes to always be suppressed, even if using -w4
+
+-e1901  // Creating a temporary of type 'x'
+-e1904  // Old-style C comment /* */
+-e1925  // Symbol 'x' is a public data member
+-e1926  // Symbol 'Symbol's default constructor implicitly called
+-e1927  // Symbol 'Symbol' was not initialized in the constructor initializer list
+
+
+// Messages to generally be suppressed
+
+-e586   // temporarily turn off deprecations
+-e716   // While(1) ... This is OK for an infinite loop, better than for(;;)
+-e801   // Use of goto is deprecated, but unfortunately being used for now
+-e829   // +headerwarn issued for header 'x' [MISRA 2012 Rule 21.5, required]
+-e9064  // goto references earlier label [MISRA 2012 Rule 15.2, required]
+-e9070  // recursive function 'x'[MISRA 2012 Rule 17.2, required], unfortunately
+-e9079  // conversion from pointer to void to pointer to other type
+
+-efile(451, time.h) // <time.h> has funky (but safe) include guards so ignore warning
+-efile(537, sys/types.h) // <sys/types.h> has funky include guards so ignore warning
+--emacro((835,845),_IO,_IOR,_IOW,_IORW) // ioctl() macros can get complaints about 0
+-emacro({717,970},FD_ZERO)
+-emacro({573,703,737},FD_SET)
+
+
+//  The following functions exhibit variable return modes.
+//  That is, they may equally-usefully be called for a value
+//  as called just for their effects.  Accordingly we inhibit
+//  Warning 534 for these functions.
+//  Feel free to add to or subtract from this list.
+
+-esym(534,ftUpdateTestStatus)
+-esym(534,tcgetattr,tcsetattr)
+-esym(534,sem_destroy,sem_init,sem_post,sem_wait)
+-esym(534,clock_gettime) // Little chance of error as used
+-esym(768,atc_52b_port_bitmap::spares) // global struct member 'x' not referenced
+
+//  Somehow lint is not seeing the right branches of the header files
+-esym(526,sem_timedwait,strnlen) // Symbol 'x' not defined
+-esym(526,__builtin_va_start)
+-esym(628,__builtin_va_start)
+
+
+//Output Format
+-width(0,4)
+-t4
+//-"format4b=%(\q%f\q%), line %l: \n\t%t %n: %m"
+-ham/~/V3
+-"format=%(\q%f\q%), line %l:\n\t%t %n — %m\n"

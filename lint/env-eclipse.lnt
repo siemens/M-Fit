@@ -1,0 +1,4 @@
+// Eclipse Lint file
+// Sets the format of the output so eclipse's Error Parser recognizes it
+
+-"format=%t:%n:%(%f:%l:%C:%)%m\n"

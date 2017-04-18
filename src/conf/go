@@ -1,0 +1,71 @@
+while :;do display -F;done &
+while :;do datakey -F;sleep 2;done &
+while :;do eeprom -F;sleep 3;done &
+while :;do filesystem -F;sleep 6;memory -F;done &
+#while :;do memory -F;sleep 2;done &
+while :;do rtc -F;sleep 3;done &
+while :;do sd -F;sleep 6;done &
+while :;do usb -F;sleep 6;done &
+#while :;do serial -V -f -cconf/sp1xsp2; serial -V -f -cconf/sp2xsp1;done &
+#while :;do serial -V -cconf/sp3sxsp5s_sp8;serial -V -cconf/sp3sxsp5s_sp8s;done &
+#while :;do serial -m0 -V -cconf/sp1xsp2_sp2xsp1_sp3s_sp5s_sp8s;serial -m0 -V -cconf/sp1xsp2_sp2xsp1_sp3s_sp5s_sp8;done &
+#while :;do serial_echo -V -cconf/sp1xsp2;done &
+#while :;do serial_echo -V -cconf/sp8s;done &
+#while :;do serial_echo -V -cconf/sp5s;done &
+#while :;do serial_echo -V -cconf/sp3sxsp5s;done &#while :;do
+#for i in 1200 2400 4800 9600 19200 38400 57600 115200;do
+#echo "sp1xsp2 "$i
+#serial_echo -cconf/sp1xsp2 -b$i
+#done
+#serial -cconf/sp1xsp2
+#done &
+
+while :;do
+for j in 19200 38400 57600 76800 153600;do
+echo "sp1s "$j
+serial_echo -F -cconf/sp1s -b$j
+done
+serial -F -cconf/sp1s
+done &
+
+while :;do
+for j in 19200 38400 57600 76800 153600;do
+echo "sp2s "$j
+serial_echo -F -cconf/sp2s -b$j
+done
+serial -F -cconf/sp2s
+done &
+
+while :;do
+for j in 19200 38400 57600 76800 153600;do
+echo "sp8s "$j
+serial_echo -F -cconf/sp8s -b$j
+done
+serial -F -cconf/sp8s
+done &
+
+#while :;do
+#for i in 1200 2400 4800 9600 19200 38400 57600 115200;do
+#echo "sp8  "$i
+#serial_echo -cconf/sp8 -b$i
+#done
+#echo sp8
+#serial -cconf/sp8
+#for j in 19200 38400 57600 76800 153600;do
+#echo "sp8s "$j
+#serial_echo -cconf/sp8s -b$j
+#done
+#echo sp8s
+#serial -cconf/sp8s
+#done &
+
+while :;do
+for i in 153600 614400;do
+echo "sp5s "$i
+serial_echo -F -cconf/sp5s -b$i
+done
+echo sp5s
+serial -F -cconf/sp5s
+done &
+
+

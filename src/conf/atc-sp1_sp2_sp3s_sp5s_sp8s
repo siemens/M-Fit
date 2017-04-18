@@ -1,0 +1,7 @@
+# Test all 5 ports with fixed 49 byte string.
+# Include '-a' argument to get ATC test string.
+sp1 sp1 49 49 1250
+sp2 sp2 49 49 1250
+sp3s sp3s 49 49 4000
+sp5s sp5s 49 49 4000
+sp8s sp8s 49 49 1333

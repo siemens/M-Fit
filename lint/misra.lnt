@@ -1,0 +1,83 @@
+/******************************************************************************
+                                   misra.lnt
+
+    Copyright (c) 2015-2017 Siemens Industry, Inc.
+    Original author: Jonathan Grant
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+        Free Software Foundation, Inc.
+        51 Franklin Street, Fifth Floor
+        Boston MA  02110-1301 USA.
+
+*******************************************************************************/
+
+// MISRA C2012
+// These are MISRA related customization for the M-Fit package
+
+
+au-misra3.lnt
+
+
+// General MISRA suppressions
+
+-e904   // Return statement before end of function 'x' [MISRA 2012 Rule 15.5, advisory]
+-e961   // Violates MISRA Advisory Rule 47, dependence placed on C's operator precedence
+-e9001  // Octal constant used [MISRA 2012 Rule 7.1, required]
+-e9003  // could define variable 'x' at block scope [MISRA 201 2 Rule 8.9, advisory]
+-e9011  // more than one 'break' terminates loop [MISRA 2012 Rule 15.4, advisory]
+-e9018  // declaration of symbol 'x' with union based type 'const portmap *'
+        // [MISRA 2012 Rule 19.2, advisory]
+-e9025  // More than two pointer indirection levels used for type 'const char ***'
+        // [MISRA 2012 Rule 18.5, advisory]
+-e9045  // non-hidden definition of type 'x' [MISRA 2012 Directive 4.8, advisory]
+-e9058  // tag 'x' unused outside of typedefs [MISRA 2012 Rule 2.4, advisory]
+
+
+// suppress this MISRA undecidable balanced call warnings, but uncomment them
+// occasionally just to check for true issues
+
+-e480   // A call was made to the 1st of a balanced pair of functions but a
+        // balancing call to the 2nd function was not made
+-e481   // Two execution paths are being combined with different balance call states
+
+
+// The following MISRA deprecated functions are in use. [MISRA 2012 Rule 21.8, required]
+
+-esym(586,exit,free,malloc)
+
+
+// Other oddities to control
+
+-esym(9075,main)  // main() does not need to be defined in a header file
+-elib(451,553,620,683,829,950,955,970,9???)
+
+
+// These macro errors must be suppressed, as they are in compiler libraries
+
+-emacro((9027),PROT_*)  // unpermitted operand to operator 'x'
+-emacro((9048),CRTSCTS) // unsigned integer literal without a 'U' suffix
+                        // [MISRA 2012 Rule 7.2, required]
+-emacro((9078),offsetof)// conversion between a pointer and integer type
+                        // [MISRA 2012 Rule 11.4, advisory]
+
+-emacro({9012,9050,9036},FD_ZERO)
+-emacro({9027,9029},FD_SET)
+-emacro({970,9036},isprint,isgraph,isdigit)
+
+--emacro((9027),S_IR*,S_IW*,S_IX*)  // unpermitted operand to operator 'x'
+--emacro((9027),O_CREAT,O_WRONLY)   // unpermitted operand to operator 'x'
+--emacro((9034),AF_INET,PF_INET,SOCKDGRAM) // Expression assigned to a narrower
+                                    // or different essential type
+
+--emacro({9027,9029,9050,9053},RTC_RD_TIME,_IO,_IOR,_IOW,_IORW)

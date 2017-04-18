@@ -1,0 +1,25 @@
+//************ XML out format for Sonar import through cxx plugin v0.2 *********************
+
+// Overwrite output formatting options from policy;
+// The following formatting options make sure that 
+// the output is in a form suitable for sonar(XML)
+
+-v // Turn off verbosity
+-width(0,0) // Don't break long lines
++xml(?xml version="1.0" ?) // add version information
++xml(results) // Turn on XML escapes
+-"format=<issue file =\q%f\q line = \q%l\q column = \q%C\q number = \q%n\q type = \q%t\q desc = \q%m\q/>"
+// Eliminate extra text lines (prologue) in-between XML tags which would render XML output invalid
+-"format_specific= "
+-"format_template="
+-hFs1   // The height of a message should be 1 (i.e. don't output the
+        // line in error); always produce File information; and Space
+        // between messages
+-pragma(message)    // do not issue pragma messages
+
++ffn // produce full file path names (absolute path names since SEPAC relative paths confuse Sonar)
+
+-e900 // 'Successful completion message' confuses ALOA
+-e830 // 'Location cited in prior message' should be excluded to not double-count issues found
+-e831 // 'Reference cited in prior message' should be excluded to not double-count issues found
+//************ end of XML out format for Sonar import through cxx plugin v0.2 *********************

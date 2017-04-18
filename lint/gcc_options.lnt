@@ -1,0 +1,5 @@
+// common formatting and options for c/c++ under gcc
+
+-hbm/~/^3
+-width(80,4)
+-"format=%(\q%f\q%), line %l, col %c:\n\t%t %n - %m\n"

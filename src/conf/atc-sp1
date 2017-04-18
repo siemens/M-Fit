@@ -1,0 +1,3 @@
+# Test async port with fixed 49 byte string; runs ~10 sec at 115200 baud.
+# Include '-a -b 115200' arguments to get ATC test string and 115200 baud.
+sp1 sp1 49 49 1250
